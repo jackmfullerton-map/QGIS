@@ -1,0 +1,3 @@
+#Use bellow code in Q GIS Python Console to add field "Hectares" and calculate the area of the
+#seclected polygons in Hectares
+layer = iface.activeLayer(); layer.startEditing(); (layer.dataProvider().addAttributes([QgsField('Hectares', QVariant.Double)]) if layer.fields().indexOf('Hectares') == -1 else None); layer.updateFields(); [layer.changeAttributeValue(f.id(), layer.fields().indexOf('Hectares'), f.geometry().area() / 10000) for f in layer.getFeatures()]; layer.commitChanges(); layer.triggerRepaint(); print(f"Done! {layer.featureCount()} features calculated")
