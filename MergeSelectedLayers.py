@@ -1,0 +1,2 @@
+#Merge 2 selected datasets and create a temporary layer
+selected = iface.layerTreeView().selectedLayers(); result = processing.run("native:mergevectorlayers", {'LAYERS':selected, 'CRS':None, 'OUTPUT':'memory:'}); QgsProject.instance().addMapLayer(result['OUTPUT'])
